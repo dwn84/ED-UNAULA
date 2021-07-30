@@ -53,6 +53,7 @@ public class IntroduccionJ {
         for (double dato : info) {
             System.out.println(dato);
         }
+        System.out.println("");
     }
 
 }
