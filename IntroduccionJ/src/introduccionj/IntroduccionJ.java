@@ -2,6 +2,7 @@ package introduccionj;
 
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Stack;
 
 /**
  *
@@ -81,16 +82,51 @@ public class IntroduccionJ {
         int cuboDatos[][][] = new int[3][4][2];
 
         //mostrar datos originales del arreglo (sin ordenar)
-        for (double dato : info) {
-            System.out.print(dato);
-        }
+        mostrarArreglo(info);
         //Invocación o llamado del procedimiento
-        ordenarInsercion(info);
+        ordenarSeleccion(info);
         System.out.println("");
         //comprobar el ordenamiento
-        for (double dato : info) {
-            System.out.print(dato);
+        mostrarArreglo(info);
+        //Invocar el método de búsqueda secuencial
+        boolean respuesta = buscarSecuencial(info, 5);
+        if (respuesta) {//validar si el objeto respuesta es verdadero (verdadero == true)
+            System.out.println("Dato encontrado");
+        } else {
+            System.out.println("Dato no existente");
         }
+        
+        //Invocar el método de búsqueda secuencial
+        boolean respuesta2 = buscarBinaria(info,3);
+        if (respuesta2) {//validar si el objeto respuesta es verdadero (verdadero == true)
+            System.out.println("Dato encontrado");
+        } else {
+            System.out.println("Dato no existente");
+        }
+        
+        //Pila de datos
+        Stack<String> superDatos = new Stack<>();
+        superDatos.push("Ana");
+        superDatos.push("Jaime");
+        superDatos.push("Juan");
+        superDatos.push("Angela");
+        superDatos.push("Veronica");
+        superDatos.push("Eliecer");
+        superDatos.push("Melquiades");
+        superDatos.pop();
+        System.out.println(superDatos);
+        
+        Stack<Integer> listado = new Stack<>();
+        listado.push(11);
+        listado.push(22);
+        listado.push(99);
+        listado.push(33);
+        listado.push(44);
+        listado.push(88);
+        System.out.println(listado);
+        
+
+        
     }
 
     //crear un nuevo método o procedimiento para
@@ -122,4 +158,71 @@ public class IntroduccionJ {
             arreglo[j] = aux;
         }
     }
+
+    //crear método de ordenamiento por selección
+    public static void ordenarSeleccion(double[] arreglo) {
+        int minimo;
+        double aux;
+        for (int i = 0; i < arreglo.length; i++) {
+            minimo = i;
+            for (int j = i; j < arreglo.length; j++) {
+                if (arreglo[j] < arreglo[minimo]) {
+                    minimo = j;
+                }
+            }
+            aux = arreglo[i];
+            arreglo[i] = arreglo[minimo];
+            arreglo[minimo] = aux;
+
+        }
+
+    }
+
+    public static void mostrarArreglo(double[] arreglo) {
+
+        for (double dato : arreglo) {
+            System.out.print(dato + " ");
+        }
+    }
+
+    //Método para buscar un dato de forma secuencial
+    public static boolean buscarSecuencial(double[] arreglo, double dato) {
+        int temp = 0, i = 0;
+        //boolean encontrado = false;
+        while (i < arreglo.length) {// && encontrado == false){
+            if (arreglo[i] == dato) {
+                temp = i;
+                System.out.println("Encontrado en la posición:" + temp);
+                return true;
+                //encontrado  = true;
+            }
+            i++;
+        }
+        /*if(encontrado){
+            System.out.println("Encontrado en la posición:" + temp);
+        }*/
+        //return encontrado;
+        return false;
+    }
+
+    public static boolean buscarBinaria(double[] arreglo, double dato) {
+        int inf = 0, sup = arreglo.length - 1;
+        int centro;
+        do {
+            //analizar validación en posiciones pares...
+            centro = (int) Math.round((sup + inf) / 2);
+            System.out.println(centro);
+
+            if (arreglo[centro] == dato) {
+                return true;
+            } else if (dato < arreglo[centro]) {
+                sup = centro-1;
+            } else {
+                inf = centro+1;
+            }
+
+        } while (inf < sup);
+        return false;
+    }
+
 }
