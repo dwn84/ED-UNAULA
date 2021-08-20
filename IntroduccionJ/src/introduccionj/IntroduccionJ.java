@@ -1,5 +1,7 @@
 package introduccionj;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Stack;
@@ -14,6 +16,7 @@ public class IntroduccionJ {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+
         /*
         //Código principal
         int p = 0;
@@ -95,15 +98,15 @@ public class IntroduccionJ {
         } else {
             System.out.println("Dato no existente");
         }
-        
+
         //Invocar el método de búsqueda secuencial
-        boolean respuesta2 = buscarBinaria(info,3);
+        boolean respuesta2 = buscarBinaria(info, 3);
         if (respuesta2) {//validar si el objeto respuesta es verdadero (verdadero == true)
             System.out.println("Dato encontrado");
         } else {
             System.out.println("Dato no existente");
         }
-        
+
         //Pila de datos
         Stack<String> superDatos = new Stack<>();
         superDatos.push("Ana");
@@ -115,7 +118,7 @@ public class IntroduccionJ {
         superDatos.push("Melquiades");
         superDatos.pop();
         System.out.println(superDatos);
-        
+
         Stack<Integer> listado = new Stack<>();
         listado.push(11);
         listado.push(22);
@@ -124,8 +127,44 @@ public class IntroduccionJ {
         listado.push(44);
         listado.push(88);
         System.out.println(listado);
-        
 
+        //Colas de datos
+        Queue<Double> notasEstudiantes = new LinkedList<>();
+        notasEstudiantes.add(4.4);
+        notasEstudiantes.add(3.4);
+        notasEstudiantes.add(4.9);
+        notasEstudiantes.remove();
+        System.out.println(notasEstudiantes);
+        
+        //Para el taller
+        //invocar el metodo validarParentesis
+        validarParentesis("(5+5)/5");//retorna verdadero
+        validarParentesis("5+(5/5))");//retorna falso
+        
+        
+        //crear un objeto de la clase ColaArregloCircular
+        ColaArregloCircular c = new ColaArregloCircular(4);
+        c.agregar(2);
+        c.agregar(3);
+        c.agregar(6);
+        c.mostrar();//[2,3,6]
+        c.borrar();
+        c.mostrar();//[3,6]
+        c.agregar(7);
+        c.agregar(8);
+        c.mostrar();//[3,6,7,8]
+        c.borrar();
+        c.mostrar();//[6,7,8]
+        c.agregar(9);
+        c.mostrar();//[6,7,8,9]
+        c.borrar();
+        c.mostrar();//[7,8,9]
+        //invocar metodos agregar y eliminar
+        //comprobar resultado invocando el metodo mostrar
+        
+        //realizar conversión de decimal a binario
+        System.out.println("Resultado de convertir 715 a binario:"
+                + convertirBinario(715));
         
     }
 
@@ -216,13 +255,29 @@ public class IntroduccionJ {
             if (arreglo[centro] == dato) {
                 return true;
             } else if (dato < arreglo[centro]) {
-                sup = centro-1;
+                sup = centro - 1;
             } else {
-                inf = centro+1;
+                inf = centro + 1;
             }
 
         } while (inf < sup);
         return false;
+    }
+
+    //conversion de decimal a binario usando pilas
+    public static String convertirBinario(int sistemaDecimal) {
+        String binario = "";//registrar los digitos
+        Stack<Integer> digitos = new Stack<>();
+        while (sistemaDecimal > 0) {
+            digitos.push(sistemaDecimal%2);//almacenar el residuo de la división
+            sistemaDecimal /= 2;
+        }
+        
+        while(!digitos.empty()){//extrayendo datos mientras la pila NO este vacia
+            binario += digitos.pop();
+        }
+
+        return binario;
     }
 
 }
