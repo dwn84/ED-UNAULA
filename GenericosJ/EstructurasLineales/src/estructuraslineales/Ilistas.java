@@ -30,6 +30,19 @@ public interface Ilistas<T> {
      */
     public void agregarDatoFinal(T a);
     
+    /**
+     * Borrar el primer dato de la lista
+     */    
+    public void borrarPrimero();
+      /**
+     * Borrar el último dato de la lista
+     */ 
+    public void borrarUltimo();
+    /**
+     * Mostrar los datos de forma ascendente
+     * @return Cadena de texto con la información
+     */
+    public String mostrarDatos();
     
     
 }
