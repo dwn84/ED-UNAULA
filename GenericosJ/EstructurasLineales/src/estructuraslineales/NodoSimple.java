@@ -15,6 +15,7 @@ public class NodoSimple<V> {
     private NodoSimple<V> apuntadorSiguiente;
 
     public NodoSimple(V info) {
+        //this. invoca los atributos y métodos de la clase
         this.dato = info;
         this.apuntadorSiguiente = null;
     }

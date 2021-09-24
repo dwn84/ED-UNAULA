@@ -32,14 +32,16 @@ public class ListaEnlazadaSimple<T extends Number & Comparable> implements Ilist
     }
 
     public void agregarDatosOrdenados(T a) {
+        //Posibilidad de reaizar operaciones aritméticas con datos de los nodos
+        //int suma =cabeza.getDato().intValue()+cabeza.getDato().intValue();
+        
         //compareTo retorna 1 si el dato del objeto es mayor al parámetro
-        if (validarListaVacia() || cabeza.getDato().compareTo(a)==1){
-             agregarDato(a);
-        }else{
+        if (validarListaVacia() || cabeza.getDato().compareTo(a) == 1) {
+            agregarDato(a);
+        } else {
             NodoSimple<T> i = cabeza;//nodo actual
             //Validar con el dato que contiene la siguiente posición 
-            //Genera java.lang.NullPointerException, falta analizar el comportamiento del ciclo
-            while (i != null && i.getApuntadorSiguiente().getDato().compareTo(a)==(-1)) {
+            while (i.getApuntadorSiguiente() != null && i.getApuntadorSiguiente().getDato().compareTo(a) == (-1)) {
                 //proceso de buscar el lugar adecuado
                 i = i.getApuntadorSiguiente();
             }
@@ -51,11 +53,34 @@ public class ListaEnlazadaSimple<T extends Number & Comparable> implements Ilist
 
     @Override
     public void agregarDatoFinal(T a) {
-
+        if (validarListaVacia()) {
+            agregarDato(a);
+        } else {
+            /*
+            for (int w = 0; w < 10; w++) {
+                
+            }//Fin del proceso // recolector de basura libera memoria, elimina w
+            w=99;// No existe la variable w*/
+            //recorrer la estructura y posicionarse en el último elemento
+            NodoSimple nodoFinal = null;
+            for (NodoSimple<T> i = cabeza; i != null; i = i.getApuntadorSiguiente()) {
+                nodoFinal = i;
+            }
+            //NodoSimple<T> nodoNuevo = new NodoSimple<>(a);
+            //nodoFinal.setApuntadorSiguiente(nodoFinal);
+            nodoFinal.setApuntadorSiguiente(new NodoSimple<>(a));
+        }
     }
 
     @Override
     public void borrarPrimero() {
+        if (validarListaVacia()) {
+            System.out.println("Lista vacia");
+        } else {
+            //Cambiar el apuntador de la estructura: cabeza
+            //apuntar al segundo elemento: el siguiente de la cabeza
+            cabeza = cabeza.getApuntadorSiguiente();
+        }
 
     }
 

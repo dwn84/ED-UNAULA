@@ -17,8 +17,8 @@ public class EstructurasLineales {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {       
-        
+    public static void main(String[] args) {
+
         // TODO code application logic here
         //Ejemplo de lista enlazada simple, creda nodo a nodo
         NodoSimple<Integer> nodo1 = new NodoSimple<>(11);
@@ -49,13 +49,28 @@ public class EstructurasLineales {
         miLista.agregarDatosOrdenados(99.0);
         miLista.agregarDatosOrdenados(77.0);
         miLista.agregarDatosOrdenados(11.0);
+        System.out.println(miLista.mostrarDatos());
+        miLista.agregarDatoFinal(99.99);
+        miLista.borrarPrimero();
         System.out.println("Datos de la lista enlazada simple");
         System.out.println(miLista.mostrarDatos());
         //System.out.println(miLista.mostrasDatosCicloMientras());
         System.out.println("Validación de lista vacia");
         System.out.println(miLista.validarListaVacia());
-
         System.out.println("");
+
+        //Ejemplo de lista enlazada doble
+        ListaEnlazadaDoble<Integer> miListaDoble = new ListaEnlazadaDoble();
+        miListaDoble.agregarDatoFinal(1);
+        miListaDoble.agregarDatoFinal(3);
+        miListaDoble.agregarDatoFinal(5);
+        System.out.println("Datos de la lista doble: " + miListaDoble.mostrarDatos());
+        miListaDoble.agregarDatoFinal(2);
+        miListaDoble.agregarDatoFinal(4);
+        miListaDoble.agregarDatoFinal(7);
+        System.out.println("Datos de la lista doble: " + miListaDoble.mostrarDatos());
+        System.out.println("Datos de la lista doble: " + miListaDoble.mostrarDatosDesdeFinal());
+
     }
 
 }
