@@ -42,9 +42,32 @@ public class ListaEnlazadaDoble<T extends Number & Comparable> implements Ilista
             NodoDoble<T> nodoNuevo = new NodoDoble<>(cola, a, null);
             cola.setApuntadorSiguiente(nodoNuevo);
             cola = nodoNuevo;
-
         }
     }
+    
+    public void agregarDatosOrdenados(T a) {
+        if (validarListaVacia() || cabeza.getDato().compareTo(a) > 0 ) {
+            agregarDato(a);
+        } else if(cola.getDato().compareTo(a) < 0){
+            agregarDatoFinal(a);
+        }else{
+            
+            NodoDoble<T> i = cabeza;//nodo actual
+            //Validar con el dato que contiene la siguiente posición 
+            while (i.getApuntadorSiguiente() != null && i.getDato().compareTo(a)<0) {
+                //proceso de buscar el lugar adecuado
+                i = i.getApuntadorSiguiente();
+            }
+            NodoDoble<T> anterior = i.getApuntadorAnterior();
+            NodoDoble<T> nuevoNodo = new NodoDoble<>(anterior,a,i);
+            anterior.setApuntadorSiguiente(nuevoNodo);
+            i.setApuntadorAnterior(nuevoNodo);           
+            
+        }
+    
+    
+    }
+
 
     @Override
     public void borrarPrimero() {
@@ -53,7 +76,16 @@ public class ListaEnlazadaDoble<T extends Number & Comparable> implements Ilista
 
     @Override
     public void borrarUltimo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(validarListaVacia()){
+            System.out.println("Lista vacia");
+        }else if(cabeza==cola){
+            cabeza = cola = null;
+        }else{
+            //modificar el siguiente del penúltimo
+            cola.getApuntadorAnterior().setApuntadorSiguiente(null);
+            //actualizar el último elemento de la estructura
+            cola = cola.getApuntadorAnterior();
+        }
     }
 
     @Override

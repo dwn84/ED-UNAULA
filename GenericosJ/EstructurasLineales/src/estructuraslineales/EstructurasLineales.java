@@ -42,16 +42,24 @@ public class EstructurasLineales {
 //        miLista.agregarDato(9.9);
 //        miLista.agregarDato(3.3);
 //        miLista.agregarDato(4.4);
-//        miLista.agregarDato(7.7);
+        miLista.agregarDato(7.7);
         miLista.agregarDatosOrdenados(33.0);
         miLista.agregarDatosOrdenados(44.0);
+        miLista.agregarDatosOrdenados(99.0);
+        miLista.agregarDatoFinal(99.0);
         miLista.agregarDatosOrdenados(22.0);
         miLista.agregarDatosOrdenados(99.0);
         miLista.agregarDatosOrdenados(77.0);
         miLista.agregarDatosOrdenados(11.0);
+        miLista.agregarDatosOrdenados(99.0);
+        miLista.borrarDuplicados();
+        miLista.contarDatos();//6
+        miLista.mostrarPromedio();
         System.out.println(miLista.mostrarDatos());
         miLista.agregarDatoFinal(99.99);
+        miLista.contarDatos();//7
         miLista.borrarPrimero();
+        miLista.contarDatos();//6
         System.out.println("Datos de la lista enlazada simple");
         System.out.println(miLista.mostrarDatos());
         //System.out.println(miLista.mostrasDatosCicloMientras());
@@ -61,14 +69,22 @@ public class EstructurasLineales {
 
         //Ejemplo de lista enlazada doble
         ListaEnlazadaDoble<Integer> miListaDoble = new ListaEnlazadaDoble();
-        miListaDoble.agregarDatoFinal(1);
-        miListaDoble.agregarDatoFinal(3);
-        miListaDoble.agregarDatoFinal(5);
+        miListaDoble.agregarDatosOrdenados(1);
+        miListaDoble.agregarDatosOrdenados(5);
+        miListaDoble.agregarDatosOrdenados(3);
         System.out.println("Datos de la lista doble: " + miListaDoble.mostrarDatos());
-        miListaDoble.agregarDatoFinal(2);
-        miListaDoble.agregarDatoFinal(4);
-        miListaDoble.agregarDatoFinal(7);
+        miListaDoble.agregarDatosOrdenados(2);
+        miListaDoble.agregarDatosOrdenados(4);
+        miListaDoble.agregarDatosOrdenados(7);
         System.out.println("Datos de la lista doble: " + miListaDoble.mostrarDatos());
+        /*miListaDoble.borrarUltimo();
+        miListaDoble.borrarUltimo();
+        miListaDoble.borrarUltimo();
+        miListaDoble.borrarUltimo();
+        miListaDoble.borrarUltimo();
+        miListaDoble.borrarUltimo();
+        miListaDoble.borrarUltimo();
+        miListaDoble.borrarUltimo();*/
         System.out.println("Datos de la lista doble: " + miListaDoble.mostrarDatosDesdeFinal());
 
     }
