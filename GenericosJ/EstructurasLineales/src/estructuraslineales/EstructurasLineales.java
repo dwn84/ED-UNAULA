@@ -52,14 +52,14 @@ public class EstructurasLineales {
         miLista.agregarDatosOrdenados(77.0);
         miLista.agregarDatosOrdenados(11.0);
         miLista.agregarDatosOrdenados(99.0);
-        miLista.borrarDuplicados();
-        miLista.contarDatos();//6
-        miLista.mostrarPromedio();
+        //miLista.borrarDuplicados();
+        //miLista.contarDatos();//6
+        //miLista.mostrarPromedio();
         System.out.println(miLista.mostrarDatos());
         miLista.agregarDatoFinal(99.99);
-        miLista.contarDatos();//7
+        //miLista.contarDatos();//7
         miLista.borrarPrimero();
-        miLista.contarDatos();//6
+        //miLista.contarDatos();//6
         System.out.println("Datos de la lista enlazada simple");
         System.out.println(miLista.mostrarDatos());
         //System.out.println(miLista.mostrasDatosCicloMientras());
@@ -86,6 +86,40 @@ public class EstructurasLineales {
         miListaDoble.borrarUltimo();
         miListaDoble.borrarUltimo();*/
         System.out.println("Datos de la lista doble: " + miListaDoble.mostrarDatosDesdeFinal());
+
+        ListaCircularSimple<Integer> miListaCircular = new ListaCircularSimple<>();
+        miListaCircular.agregarDatoFinal(11);
+        miListaCircular.agregarDatoFinal(22);
+        miListaCircular.agregarDatoFinal(33);
+        miListaCircular.agregarDatoFinal(99);
+        miListaCircular.agregarDatoFinal(55);
+        miListaCircular.agregarDatoFinal(77);
+        miListaCircular.agregarDatoFinal(46);
+        System.out.println(miListaCircular.mostrarDatos());
+        //miListaCircular.borrarPrimero();
+        //miListaCircular.borrarPrimero();
+        miListaCircular.borrarUltimo();
+        miListaCircular.borrarUltimo();
+        miListaCircular.borrarUltimo();
+        miListaCircular.borrarUltimo();
+        System.out.println(miListaCircular.mostrarDatos());
+
+        ListaCircularDoble<Integer> miListaCD = new ListaCircularDoble<>();
+        miListaCD.agregarDatoFinal(11);
+        miListaCD.agregarDatoFinal(33);
+        miListaCD.agregarDatoFinal(44);
+        miListaCD.agregarDatoFinal(22);
+        miListaCD.agregarDatoFinal(77);
+        miListaCD.agregarDatoFinal(55);
+        System.out.println(miListaCD.mostrarDatos());
+//        miListaCD.borrarPrimero();
+//        miListaCD.borrarPrimero();
+//        miListaCD.borrarPrimero();
+        miListaCD.borrarUltimo();
+        miListaCD.borrarUltimo();
+        miListaCD.borrarUltimo();
+ 
+        System.out.println(miListaCD.mostrarDatos());
 
     }
 
