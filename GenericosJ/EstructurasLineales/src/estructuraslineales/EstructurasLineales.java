@@ -17,8 +17,46 @@ public class EstructurasLineales {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static int sumatoriaRecursiva(int n) {
+        //caso base
+        if (n == 1) {
+            return 1;
+        } else {
+            return n+sumatoriaRecursiva(--n);
+        }
 
+    }
+    public static int factorialRecursivo(int n) {
+        //caso base
+        if (n == 0) {
+            return 1;
+        } else {
+            return n*factorialRecursivo(--n);
+        }
+
+    }
+    public static int fibonacciRecursivo(int n) {
+    
+        if(n==0){
+            return 0;
+        }else if(n==1){
+            return 1;
+        }else{
+            return fibonacciRecursivo(n-1)+fibonacciRecursivo(n-2);
+        }
+        
+    }
+    
+    
+    
+
+
+    public static void main(String[] args) {
+        int x = sumatoriaRecursiva(10);
+        int s = factorialRecursivo(6);
+        System.out.println(s);
+        int f = fibonacciRecursivo(7);
+        System.out.println("Elemento fibo:"+f);
         // TODO code application logic here
         //Ejemplo de lista enlazada simple, creda nodo a nodo
         NodoSimple<Integer> nodo1 = new NodoSimple<>(11);
@@ -118,7 +156,7 @@ public class EstructurasLineales {
         miListaCD.borrarUltimo();
         miListaCD.borrarUltimo();
         miListaCD.borrarUltimo();
- 
+
         System.out.println(miListaCD.mostrarDatos());
 
     }
