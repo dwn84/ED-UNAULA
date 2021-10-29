@@ -64,10 +64,103 @@ public class ArbolBusquedaBinaria {
             padre = raizActual;
 
             if (dato < raizActual.getDato()) {
+                desplazamientoPadre = false;
                 return buscar(dato, raizActual.getApuntadorIzquierdo());
             } else {
+                desplazamientoPadre = true;
                 return buscar(dato, raizActual.getApuntadorDerecho());
             }
         }
     }
+
+    public void borrarNodo(int dato) {
+        if (raiz == null) {
+            System.out.println("Árbol vacio");
+        } else {
+            borrarNodo(dato, raiz);
+        }
+    }
+
+    private void borrarNodo(int dato, NodoBinario raizActual) {
+        NodoBinario v = buscar(dato);
+        //if v is a leaf //validar si el nodo es hoja
+        if (v.validarHoja()) {
+            if (desplazamientoPadre) {
+                padre.setApuntadorDerecho(null);
+            } else {
+                padre.setApuntadorIzquierdo(null);
+            }
+        } else if (v.validarSoloUnHijo()) {
+            //  bypass v: enlazar el abuelo con el hijo
+            if (v.isHijoDerechoIzquierdo()) {
+                if (desplazamientoPadre) {
+                    padre.setApuntadorDerecho(v.getApuntadorDerecho());
+                } else {
+                    padre.setApuntadorIzquierdo(v.getApuntadorDerecho());
+                }
+            } else if (desplazamientoPadre) {
+                padre.setApuntadorDerecho(v.getApuntadorIzquierdo());
+            } else {
+                padre.setApuntadorIzquierdo(v.getApuntadorIzquierdo());
+            }
+        } else {//el dato a borrar tiene dos hijos
+            //replace v with successor
+            //Ubicarse en subárbol derecho y localizar el dato menor.
+            NodoBinario menor = obtenerMenor(v.getApuntadorDerecho());
+            borrarNodo(menor.getDato());
+            v.setDato(menor.getDato());
+        }
+
+    }
+
+    private NodoBinario obtenerMenor(NodoBinario raizActual) {
+        if (raizActual.getApuntadorIzquierdo() == null) {
+            return raizActual;
+        } else {
+            return obtenerMenor(raizActual.getApuntadorIzquierdo());
+        }
+    }
+
+    //recorridos
+    //Preorden: Raiz – Izq – Der
+    public void Preorden() {
+        Preorden(raiz);
+    }
+
+    private void Preorden(NodoBinario raizActual) {
+        if (raizActual != null) {
+            System.out.println(raizActual.getDato());
+            Preorden(raizActual.getApuntadorIzquierdo());
+            Preorden(raizActual.getApuntadorDerecho());
+
+        }
+    }
+
+    //Postorden: Izq – Der –  Raiz
+    public void Postorden() {
+        Postorden(raiz);
+    }
+
+    private void Postorden(NodoBinario raizActual) {
+        if (raizActual != null) {
+            Postorden(raizActual.getApuntadorIzquierdo());
+            Postorden(raizActual.getApuntadorDerecho());
+            System.out.println(raizActual.getDato());
+        }
+    }
+
+    //Inorden: Izq – Raiz – Der
+    public void Inorden() {
+        Inorden(raiz);
+    }
+
+    private void Inorden(NodoBinario raizActual) {
+        if (raizActual != null) {
+            Inorden(raizActual.getApuntadorIzquierdo());
+            System.out.println(raizActual.getDato());
+            Inorden(raizActual.getApuntadorDerecho());
+
+        }
+    }
+
 }

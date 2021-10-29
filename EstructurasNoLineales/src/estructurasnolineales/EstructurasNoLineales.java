@@ -21,10 +21,15 @@ public class EstructurasNoLineales {
         bst.agregarNodo(33);
         bst.agregarNodo(77);
         bst.agregarNodo(22);
+        bst.agregarNodo(66);
         bst.agregarNodo(88);
-        String resultadoBusqueda = (bst.buscar(22)==null)?"Dato no encontrado":"Dato encontrado";
+        String resultadoBusqueda = (bst.buscar(88) == null) ? "Dato no encontrado" : "Dato encontrado";
         System.out.println(resultadoBusqueda);
-        
+        //System.out.println("Padre del nodo buscado"+bst.getPadre().getDato());
+        bst.borrarNodo(77);
+        bst.Inorden();
+        System.out.println("");
+
     }
-    
+
 }

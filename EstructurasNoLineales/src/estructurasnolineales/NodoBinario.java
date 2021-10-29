@@ -81,6 +81,13 @@ public class NodoBinario {
     public void setApuntadorIzquierdo(NodoBinario apuntadorIzquierdo) {
         this.apuntadorIzquierdo = apuntadorIzquierdo;
     }
+
+    /**
+     * @return the hijoDerechoIzquierdo
+     */
+    public boolean isHijoDerechoIzquierdo() {
+        return hijoDerechoIzquierdo;
+    }
     
     
 }
