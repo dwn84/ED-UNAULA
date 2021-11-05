@@ -30,6 +30,22 @@ public class EstructurasNoLineales {
         bst.Inorden();
         System.out.println("");
 
+        grafoEstatico g1 = new grafoEstatico(7);
+        g1.AgregarArco(0, 1);
+        g1.AgregarArco(0, 2);
+        g1.AgregarArco(0, 3);
+        g1.AgregarArco(2, 4);
+        g1.AgregarArco(2, 5);
+        g1.AgregarArco(3, 6);
+        System.out.println("Matriz de adyacencia");
+        System.out.println(g1.MostrarMatrixAdyacencia());
+        System.out.println("Lista de adyacencia");
+        System.out.println(g1.MostrarListaAdyacencia());
+        System.out.println("Recorrido en Anchura");
+        g1.recorridoAnchura(0);
+        System.out.println("\nRecorrido en Profundidad");
+        g1.recorridoProfundidad(0);
+
     }
 
 }
